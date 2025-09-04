@@ -10,7 +10,6 @@ COPY package*.json ./
 # Install dependencies
 RUN npm install
 
-COPY .env .
 # Copy rest of the backend source code
 COPY . .
 
