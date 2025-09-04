@@ -1,23 +1,21 @@
-# Use official Node.js LTS image
-FROM node:18
+# Base image
+FROM node:18-alpine
 
-# Create and set working directory
-WORKDIR /app
+# Set working directory inside container
+WORKDIR /mern-docker-setup
 
-# Copy package.json and package-lock.json first (for caching layers)
+# Copy package.json and package-lock.json first (better cache usage)
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy .env file
-COPY .env . 
-
-# Copy rest of the application code
+COPY .env .
+# Copy rest of the backend source code
 COPY . .
 
-# Expose backend port
+# Expose the port your backend listens on
 EXPOSE 5000
 
-# Start the server
+# Start the app
 CMD ["node", "server.js"]
