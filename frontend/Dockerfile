@@ -22,4 +22,4 @@ COPY --from=build /app/build /usr/share/nginx/html
 EXPOSE 80
 
 # Nginx runs by default, so no CMD needed
-CMD ["nginx", "-g", "daemon on;"]
+CMD ["nginx", "-g", "daemon off;"]
